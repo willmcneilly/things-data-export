@@ -18,6 +18,8 @@
 		503B3419187DD68A009B06DE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503B33F8187DD68A009B06DE /* Cocoa.framework */; };
 		503B3421187DD68A009B06DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 503B341F187DD68A009B06DE /* InfoPlist.strings */; };
 		503B3423187DD68A009B06DE /* things_integrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 503B3422187DD68A009B06DE /* things_integrationTests.m */; };
+		503B342E187E1EA2009B06DE /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503B342D187E1EA2009B06DE /* ScriptingBridge.framework */; };
+		50E786D8188359380042ECFE /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E786D7188359380042ECFE /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,9 @@
 		503B341E187DD68A009B06DE /* things-integrationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "things-integrationTests-Info.plist"; sourceTree = "<group>"; };
 		503B3420187DD68A009B06DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		503B3422187DD68A009B06DE /* things_integrationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = things_integrationTests.m; sourceTree = "<group>"; };
+		503B342C187E1C35009B06DE /* ThingsApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThingsApp.h; sourceTree = "<group>"; };
+		503B342D187E1EA2009B06DE /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
+		50E786D7188359380042ECFE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50E786D8188359380042ECFE /* WebKit.framework in Frameworks */,
+				503B342E187E1EA2009B06DE /* ScriptingBridge.framework in Frameworks */,
 				503B33F9187DD68A009B06DE /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,6 +102,8 @@
 		503B33F7187DD68A009B06DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				50E786D7188359380042ECFE /* WebKit.framework */,
+				503B342D187E1EA2009B06DE /* ScriptingBridge.framework */,
 				503B33F8187DD68A009B06DE /* Cocoa.framework */,
 				503B3417187DD68A009B06DE /* XCTest.framework */,
 				503B33FA187DD68A009B06DE /* Other Frameworks */,
@@ -120,6 +129,7 @@
 				503B340D187DD68A009B06DE /* MainMenu.xib */,
 				503B3410187DD68A009B06DE /* Images.xcassets */,
 				503B33FF187DD68A009B06DE /* Supporting Files */,
+				503B342C187E1C35009B06DE /* ThingsApp.h */,
 			);
 			path = "things-integration";
 			sourceTree = "<group>";
@@ -464,6 +474,7 @@
 				503B3428187DD68A009B06DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		503B3429187DD68A009B06DE /* Build configuration list for PBXNativeTarget "things-integrationTests" */ = {
 			isa = XCConfigurationList;
@@ -472,6 +483,7 @@
 				503B342B187DD68A009B06DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
