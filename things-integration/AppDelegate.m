@@ -17,6 +17,7 @@
     thingsAppList *_logbook;
     SBElementArray *loggedTodos;
     NSMutableArray *_todoList;
+    NSString *_prettifiedThingsJSONData;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -99,15 +100,9 @@
         if (! jsonData) {
             NSLog(@"Got an error: %@", error);
         } else {
-            NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-            NSLog(@"%@", jsonString);
+            _prettifiedThingsJSONData = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            NSLog(@"%@", _prettifiedThingsJSONData);
         }
-        
-        
-
-        
-        
-        
         
     }
     
@@ -118,7 +113,8 @@
 
 
 - (IBAction)doIt:(id)sender {
-
-    
+    NSLog(@"________________________");
+    NSLog(@"%@", _prettifiedThingsJSONData);
+    NSLog(@"________________________");
 }
 @end
