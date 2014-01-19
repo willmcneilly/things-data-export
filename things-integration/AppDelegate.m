@@ -133,6 +133,7 @@
             NSLog(@"Got an error: %@", error);
         } else {
             _prettifiedThingsJSONData = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            [self createFileFromData:_prettifiedThingsJSONData];
             NSLog(@"%@", _prettifiedThingsJSONData);
         }
         
@@ -148,6 +149,18 @@
 
         return stringToCheck;
     }
+}
+
+- (void) createFileFromData:(NSString *)dataString {
+    NSError * error = NULL;
+    NSString *pathToDesktop = [NSString stringWithFormat:@"/Users/%@/Desktop", NSUserName()];
+    NSString *fileName = [NSString stringWithFormat:@"%@/test.json", pathToDesktop];
+    BOOL success = [dataString writeToFile:fileName atomically:NO  encoding:NSUTF8StringEncoding error:&error];
+    if(success == NO)
+    {
+        NSLog( @"error saving to %@ - %@", fileName, [error localizedDescription] );
+    }
+
 }
 
 
