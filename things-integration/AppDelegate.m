@@ -75,7 +75,8 @@
 //    @property (copy) thingsAppContact *contact;  // Contact the to do is assigned to
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateStyle:NSDateFormatterFullStyle];
+    // ISO-8601 Date format
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mmZ"];
     
     if(_logbook) {
         loggedTodos = _logbook.toDos;
@@ -141,9 +142,9 @@
     
 }
 
-- (id) checkIfNull:(NSString*)stringToCheck {
+- (NSString *) checkIfNull:(NSString*)stringToCheck {
     if(stringToCheck.length == 0){
-        return [NSNull null];
+        return @"";
     }
     else {
 
