@@ -141,9 +141,9 @@
     
 }
 
-- (NSString *) checkIfNull:(NSString*)stringToCheck {
+- (id) checkIfNull:(NSString*)stringToCheck {
     if(stringToCheck.length == 0){
-        return @"";
+        return [NSNull null];
     }
     else {
 
