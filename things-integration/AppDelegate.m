@@ -48,30 +48,31 @@
 - (void)getAllData
 {
     _todoList = [NSMutableArray arrayWithCapacity:50];
-    BOOL frontMost = _thingsApp.frontmost;
-    NSString *myVal;
-    NSString *version = _thingsApp.name;
-    if(frontMost) {
-        myVal = @"is frontmost";
-    }
-    else {
-        myVal = @"is not frontmost";
-    }
-    
     
     SBElementArray *allLists = _thingsApp.lists;
     
-    thingsAppList *firstObject = [allLists objectAtIndex:0];
-    
-    
     
     for (thingsAppList *obj in allLists) {
-        // Generic things that you do to objects of *any* class go here.
-        // NSLog(@"this is the variable value: %@",obj.name);
         if([obj.name isEqualToString:@"Logbook"]) {
             _logbook = obj;
         }
+        
     }
+    
+    
+//    @property (copy) NSString *name;  // Name of the to do
+//    @property (copy) NSDate *creationDate;  // Creation date of the to do
+//    @property (copy) NSDate *modificationDate;  // Modification date of the to do
+//    @property (copy) NSDate *dueDate;  // Due date of the to do
+//    @property (copy, readonly) NSDate *activationDate;  // Activation date of the scheduled to do
+//    @property (copy) NSDate *completionDate;  // Completion date of the to do
+//    @property (copy) NSDate *cancellationDate;  // Cancellation date of the to do
+//    @property thingsAppStatus status;  // Status of the to do
+//    @property (copy) NSString *tagNames;  // Tag names separated by comma
+//    @property (copy) NSString *notes;  // Notes of the to do
+//    @property (copy) thingsAppProject *project;  // Project the to do belongs to
+//    @property (copy) thingsAppArea *area;  // Area the to do belongs to
+//    @property (copy) thingsAppContact *contact;  // Contact the to do is assigned to
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterFullStyle];
@@ -79,18 +80,49 @@
     if(_logbook) {
         loggedTodos = _logbook.toDos;
         for (thingsAppToDo *todo in loggedTodos) {
-            //NSLog(@"%@ %@",todo.id, todo.name);
+//            NSLog(@"%@, %@, %@, %@",todo.id, todo.name, todo.area.name, todo.project.name);
+            NSString *areaName = [self checkIfNull:todo.area.name];
+
+            NSString *todoID = [self checkIfNull:todo.id];
+            NSString *name = [self checkIfNull:todo.name];
+            NSString *creationDate = [self checkIfNull:[dateFormatter stringFromDate:todo.creationDate]];
+            NSString *modificationDate = [self checkIfNull:[dateFormatter stringFromDate:todo.modificationDate]];
+            NSString *dueDate = [self checkIfNull:[dateFormatter stringFromDate:todo.dueDate]];
+            NSString *activationDate = [self checkIfNull:[dateFormatter stringFromDate:todo.activationDate]];
+            NSString *completionDate = [self checkIfNull:[dateFormatter stringFromDate:todo.completionDate]];
+            NSString *tagNames = [self checkIfNull:todo.tagNames];
+            NSString *projectName = [self checkIfNull:todo.project.name];
+            
+//            NSLog(@"%@, %@, %@, %@, %@, %@, %@, %@, %@, %@ \n\n",areaName, todoID, name, creationDate, modificationDate, dueDate, activationDate, completionDate, tagNames, projectName);
+           
+            
             
             NSDictionary *daTodo = [NSDictionary
                                     dictionaryWithObjectsAndKeys:
-                                    todo.id, @"id",
-                                    todo.name, @"name",
-                                    [dateFormatter stringFromDate:todo.creationDate], @"creationDate",
-                                    [dateFormatter stringFromDate:todo.completionDate], @"completionDate",
+                                    areaName, @"areaName",
+                                    todoID, @"id",
+                                    name, @"name",
+                                    creationDate, @"creationDate",
+                                    modificationDate, @"modificationDate",
+                                    dueDate, @"dueDate",
+                                    activationDate, @"activationDate",
+                                    completionDate, @"completionDate",
+                                    // TODO: Status
+                                    tagNames, @"tagNames",
+                                    //todo.notes, @"notes",
+                                    projectName, @"projectName",
+                                    
+                                    // TODO: Contact
                                     nil];
+            
+//            NSLog(@"%@", daTodo);
+//            NSLog(@"-----------------------------------\n\n");
             [_todoList addObject:daTodo];
             
+            
         }
+        
+        //NSLog(@"array: %@", _todoList);
         
         
         NSLog(@"Number in array %lu", (unsigned long)_todoList.count);
@@ -106,8 +138,16 @@
         
     }
     
-    [self.sampleTextField setStringValue:[NSString stringWithFormat:@"%@ %@", version, firstObject.name]];
-    
+}
+
+- (NSString *) checkIfNull:(NSString*)stringToCheck {
+    if(stringToCheck.length == 0){
+        return @"";
+    }
+    else {
+
+        return stringToCheck;
+    }
 }
 
 
