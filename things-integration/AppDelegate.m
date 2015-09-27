@@ -73,7 +73,7 @@
 //    @property (copy) thingsAppProject *project;  // Project the to do belongs to
 //    @property (copy) thingsAppArea *area;  // Area the to do belongs to
 //    @property (copy) thingsAppContact *contact;  // Contact the to do is assigned to
-    
+     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     // ISO-8601 Date format
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mmZ"];
